@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casse-tête Numérique</title>
+    <title>Casse-tête Numérique (16/9)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,7 +11,8 @@
         }
         #puzzle {
             display: grid;
-            grid-template-columns: repeat(15, 50px); /* 15 colonnes */
+            grid-template-columns: repeat(21, 50px); /* 21 colonnes pour un format 16:9 */
+            grid-template-rows: repeat(12, 50px); /* 12 lignes */
             grid-gap: 2px;
             justify-content: center;
             margin-top: 20px;
@@ -32,7 +33,7 @@
     <div id="puzzle"></div>
 
     <script>
-        // Génération du puzzle avec 225 cases
+        // Génération du puzzle avec 21x12 = 252 cases
         const puzzle = document.getElementById('puzzle');
         for (let i = 150; i <= 375; i++) {
             let div = document.createElement('div');
@@ -43,12 +44,12 @@
 
         function revealPiece() {
             let num = document.getElementById('numero').value;
-            if (num >= 1 && num <= 225) {
+            if (num >= 150 && num <= 375) {
                 let piece = document.getElementById('p' + num);
-                piece.style.background = `url('pieces/${num}.png')`;
-                piece.style.backgroundSize = "cover";
+                piece.style.background = `url('${num}.png')`; // Utilisation directe du fichier
+                piece.style.backgroundSize = "100% 100%"; // Ajuste l'image à la case
             } else {
-                alert("Numéro invalide ! Entrez un nombre entre 1 et 225.");
+                alert("Numéro invalide ! Entrez un nombre entre 150 et 375.");
             }
         }
     </script>
