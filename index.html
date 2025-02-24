@@ -1,19 +1,24 @@
-- 35 tables 24x72
-- 180 chaises non pliantes<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casse-tête Numérique</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
         #puzzle {
             display: grid;
-            grid-template-columns: repeat(25, 40px); /* 25 colonnes */
+            grid-template-columns: repeat(15, 50px); /* 15 colonnes */
             grid-gap: 2px;
+            justify-content: center;
+            margin-top: 20px;
         }
         .piece {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border: 1px solid #ccc;
             background: gray;
         }
@@ -21,15 +26,15 @@
 </head>
 <body>
     <h2>Entrez votre numéro pour révéler votre pièce :</h2>
-    <input type="number" id="numero" min="1" max="350">
+    <input type="number" id="numero" min="150" max="375">
     <button onclick="revealPiece()">Révéler</button>
 
     <div id="puzzle"></div>
 
     <script>
-        // Génération du puzzle avec 350 cases
+        // Génération du puzzle avec 225 cases
         const puzzle = document.getElementById('puzzle');
-        for (let i = 1; i <= 350; i++) {
+        for (let i = 150; i <= 375; i++) {
             let div = document.createElement('div');
             div.classList.add('piece');
             div.id = 'p' + i;
@@ -38,10 +43,12 @@
 
         function revealPiece() {
             let num = document.getElementById('numero').value;
-            if (num >= 1 && num <= 350) {
+            if (num >= 1 && num <= 225) {
                 let piece = document.getElementById('p' + num);
                 piece.style.background = `url('pieces/${num}.png')`;
                 piece.style.backgroundSize = "cover";
+            } else {
+                alert("Numéro invalide ! Entrez un nombre entre 1 et 225.");
             }
         }
     </script>
