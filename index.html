@@ -44,12 +44,12 @@
 
         function revealPiece() {
             let num = document.getElementById('numero').value;
-            if (num >= 150 && num <= 375) {
+            if (num >= 1 && num <= 225) {
                 let piece = document.getElementById('p' + num);
-                piece.style.background = `url('${num}.png')`; // Utilisation directe du fichier
+                piece.style.background = `url('${num}.jpg')`; // Utilisation directe du fichier
                 piece.style.backgroundSize = "100% 100%"; // Ajuste l'image à la case
             } else {
-                alert("Numéro invalide ! Entrez un nombre entre 150 et 375.");
+                alert("Numéro invalide ! Entrez un nombre entre 1 et 225.");
             }
         }
     </script>
