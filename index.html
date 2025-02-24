@@ -1,0 +1,49 @@
+- 35 tables 24x72
+- 180 chaises non pliantes<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casse-tête Numérique</title>
+    <style>
+        #puzzle {
+            display: grid;
+            grid-template-columns: repeat(25, 40px); /* 25 colonnes */
+            grid-gap: 2px;
+        }
+        .piece {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc;
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <h2>Entrez votre numéro pour révéler votre pièce :</h2>
+    <input type="number" id="numero" min="1" max="350">
+    <button onclick="revealPiece()">Révéler</button>
+
+    <div id="puzzle"></div>
+
+    <script>
+        // Génération du puzzle avec 350 cases
+        const puzzle = document.getElementById('puzzle');
+        for (let i = 1; i <= 350; i++) {
+            let div = document.createElement('div');
+            div.classList.add('piece');
+            div.id = 'p' + i;
+            puzzle.appendChild(div);
+        }
+
+        function revealPiece() {
+            let num = document.getElementById('numero').value;
+            if (num >= 1 && num <= 350) {
+                let piece = document.getElementById('p' + num);
+                piece.style.background = `url('pieces/${num}.png')`;
+                piece.style.backgroundSize = "cover";
+            }
+        }
+    </script>
+</body>
+</html>
