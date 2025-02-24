@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casse-tête Numérique (16/9)</title>
+    <title>Casse-tête Numérique (15x15 - Ratio 16/9 ajusté)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,15 +11,15 @@
         }
         #puzzle {
             display: grid;
-            grid-template-columns: repeat(21, 50px); /* 21 colonnes pour un format 16:9 */
-            grid-template-rows: repeat(12, 50px); /* 12 lignes */
+            grid-template-columns: repeat(15, 60px); /* 15 colonnes */
+            grid-template-rows: repeat(15, 34px);  /* 15 lignes */
             grid-gap: 2px;
             justify-content: center;
             margin-top: 20px;
         }
         .piece {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 34px; /* Hauteur ajustée pour garder un ratio proche du 16:9 */
             border: 1px solid #ccc;
             background: gray;
         }
@@ -33,13 +33,15 @@
     <div id="puzzle"></div>
 
     <script>
-        // Génération du puzzle avec 21x12 = 252 cases
+        // Génération du puzzle avec 225 pièces (15x15)
         const puzzle = document.getElementById('puzzle');
-        for (let i = 150; i <= 375; i++) {
+        let numeroImage = 150;
+        for (let i = 0; i < 225; i++) {
             let div = document.createElement('div');
             div.classList.add('piece');
-            div.id = 'p' + i;
+            div.id = 'p' + numeroImage;
             puzzle.appendChild(div);
+            numeroImage++;
         }
 
         function revealPiece() {
